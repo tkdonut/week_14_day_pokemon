@@ -18,7 +18,7 @@ class PokemonContainer extends React.Component {
 
     render(){
         return (
-        <div>
+        <div className='flexContainer'>
             <h1>Pokemon Getter Dodadder</h1>
             <PokemonForm onPokemonSearched={this.handleSearchedPokemon}/>
             <PokemonDetail pokemon={this.state.currentPokemon}/>
