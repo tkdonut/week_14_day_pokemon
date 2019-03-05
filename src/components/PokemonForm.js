@@ -16,6 +16,7 @@ class PokemonForm extends Component {
 
     handleSubmit(e){
         e.preventDefault();
+	if (!this.state.pokename) return;
         const url = 'https://pokeapi.co/api/v2/pokemon/' + this.state.pokeName
         
         fetch(url)
