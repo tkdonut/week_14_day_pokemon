@@ -16,13 +16,24 @@ class PokemonForm extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-	if (!this.state.pokename) return;
+	if (this.state.pokename === '') return;
         const url = 'https://pokeapi.co/api/v2/pokemon/' + this.state.pokeName
         
         fetch(url)
-        .then(res => res.json())
-        .then(data => this.props.onPokemonSearched(data))
-
+        .then(res => {
+            if (res.status === 404){
+                this.props.pokemonFound(false);
+                throw Error('No pokemon found');
+            } else {
+            return res.json()
+            }
+        })
+        .then(data => {
+            console.log(data);
+            this.props.onPokemonSearched(data)
+            this.props.pokemonFound(true);
+        })
+        .catch(error => console.error(error));
         this.setState({pokeName: ''})
     }
 
