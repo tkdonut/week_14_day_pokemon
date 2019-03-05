@@ -16,7 +16,7 @@ class PokemonForm extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-	if (this.state.pokename === '') return;
+	if (this.state.pokeName === '') return;
         const url = 'https://pokeapi.co/api/v2/pokemon/' + this.state.pokeName
         
         fetch(url)
@@ -25,11 +25,10 @@ class PokemonForm extends Component {
                 this.props.pokemonFound(false);
                 throw Error('No pokemon found');
             } else {
-            return res.json()
+                return res.json()
             }
         })
         .then(data => {
-            console.log(data);
             this.props.onPokemonSearched(data)
             this.props.pokemonFound(true);
         })
