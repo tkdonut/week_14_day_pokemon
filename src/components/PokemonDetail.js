@@ -12,7 +12,7 @@ const PokemonDetail = ({pokemon, pokemonFound}) => {
     <div>
 
         <h1>{pokemon.name}</h1>
-        <img src={pokemon.sprites.front_default} alt='pokemon'/>
+        <img className='sprite'  src={pokemon.sprites.front_default} alt='pokemon'/>
     
 
     </div>
